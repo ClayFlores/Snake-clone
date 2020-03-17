@@ -10,6 +10,9 @@ namespace Snake_clone
     {
         static void Main(string[] args)
         {
+            GameBoard board = new GameBoard();
+            board.genBoard();
+            board.printBoard();
         }
     }
 }
