@@ -10,7 +10,7 @@ namespace Snake_clone
     {
         List<int> PlayerPos;
         public List<char> Board = new List<char>();
-
+        public bool isAlive = true;
 
         public void genBoard()
         {
@@ -33,9 +33,20 @@ namespace Snake_clone
                     Board.Add(' ');
                 }
             }
-                Board[125] = '='; // player start
-                Board[150] = 'o'; // first apple
+            Board[125] = '='; // player start
+            PlayerPos.Add(125);    
+            Board[150] = 'o'; // first apple
             
+        }
+
+        internal void move()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void checkAlive()
+        {
+            throw new NotImplementedException();
         }
 
         // prints out the board
