@@ -18,7 +18,7 @@ namespace Snake_clone
             var direction = "r";
 
             // the "do they want to play" block 
-            Console.WriteLine("Would you like to play? (Y to play)");
+            Console.WriteLine("\nWould you like to play? (Y to play)");
             response = (char) Console.Read();
             if (response != 'Y' && response != 'y') // why dont they want to play? :(
             {

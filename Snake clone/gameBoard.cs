@@ -9,34 +9,31 @@ namespace Snake_clone
     public class GameBoard
     {
         List<int> PlayerPos;
-        public List<char> Board = new List<char>();
+        public List<List<char>> Board = new List<List<char>>(); // 2d list
         public bool isAlive = true;
 
         public void genBoard()
         {
-            for (int i = 0; i < 400; i++) // 400 is total spaces in board
-            {
-                if (i < 40 || i >= 360)
-                {
-                    Board.Add('-');
-                }
-                else if (i % 40 == 0)
-                {
-                    Board.Add('|');
-                }
-                else if (i % 40 == 39)
-                {
-                    Board.Add('|');
-                }
-                else
-                {
-                    Board.Add(' ');
-                }
-            }
-            Board[125] = '='; // player start
-            PlayerPos.Add(125);    
-            Board[150] = 'o'; // first apple
+            int boardSize = 10; // to keep changing board size easy
             
+            for(int i=0; i<boardSize; i++)
+            {
+                List<char> subList = new List<char>();
+                for(int j=0; j<boardSize*2; j++)
+                {
+                    if (i == 0 || i == 9) // top or bottom row
+                    {
+                        subList.Add('X');
+                    }
+                    else if (j == 0 || j == boardSize*2-1) // left or right col
+                    {
+                        subList.Add('X');
+                    }
+                    else
+                        subList.Add(' ');
+                }
+                Board.Add(subList);
+            }
         }
 
         internal void move()
@@ -52,13 +49,14 @@ namespace Snake_clone
         // prints out the board
         public void printBoard()
         {
-            for (int i = 0; i < 400; i++) // 400 is total spaces in board
+            foreach(var subList in Board)
             {
-                    Console.Write(Board[i]);
-                    if (i > 0 && i % 40 == 39)
-                        Console.WriteLine();
+                foreach(var val in subList)
+                {
+                    Console.Write(val);
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
         }
     }
 }
