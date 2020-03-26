@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake_clone
@@ -14,8 +15,6 @@ namespace Snake_clone
             board.genBoard();
             board.printBoard();
             char response;
-
-            var direction = "r";
 
             // the "do they want to play" block 
             Console.WriteLine("\nWould you like to play? (Y to play)");
@@ -32,8 +31,10 @@ namespace Snake_clone
                 board.move();
 
 
-                board.checkAlive();
+                // needed to slow the game down
+                Thread.Sleep(500);
             }
+            board.gameOver();
         }
     } 
 }
