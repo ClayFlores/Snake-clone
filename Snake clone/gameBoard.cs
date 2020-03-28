@@ -13,11 +13,12 @@ namespace Snake_clone
         public List<List<char>> Board = new List<List<char>>(); // 2d list
         public bool isAlive = true;
         int applesEaten = 0;
-
-        enum Direction
+        
+        public enum Direction
         {
             up, down, left, right
         }
+        public Direction currDirection = Direction.right; // default direction
 
         // this generates the board as a 2d List of chars
         // the borders are displayed as 'X' chars, the snake as '='
