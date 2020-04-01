@@ -14,7 +14,7 @@ namespace Snake_clone
         static void Main(string[] args)
         {
             DateTime lastMeasuredTime = DateTime.Now;
-            double frameTime = 1000.0 / 2; // 1000ms / 2 = 2 fps (using frames for speed of snake / difficulty)
+            double frameTime = 1000.0 / 4; // 1000ms / 4 = 4 fps (using frames for speed of snake / difficulty)
 
             GameBoard board = new GameBoard();
             board.genBoard();
@@ -81,7 +81,7 @@ namespace Snake_clone
                         lastMeasuredTime = DateTime.Now;
                     }
                 }
-                board.gameOver();
+                //board.gameOver();
             
         }
     } 

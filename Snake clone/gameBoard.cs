@@ -13,7 +13,8 @@ namespace Snake_clone
         public List<List<char>> Board = new List<List<char>>(); // 2d list
         public bool isAlive = true;
         int applesEaten = 0;
-        
+        int boardSize = 10; // to keep changing board size easy
+
         public enum Direction
         {
             up, down, left, right
@@ -25,7 +26,6 @@ namespace Snake_clone
         // and the apples as 'o'
         public void genBoard()
         {
-            int boardSize = 10; // to keep changing board size easy
             for(int i=0; i<boardSize; i++)
             {
                 List<char> subList = new List<char>();
@@ -78,6 +78,7 @@ namespace Snake_clone
                         Snake.Add(temp);
                         Board[temp.xCoord][temp.yCoord] = '=';
                         applesEaten++;
+                        randApple();
                     }
                     else
                     {
@@ -105,6 +106,7 @@ namespace Snake_clone
                         Snake.Add(temp);
                         Board[temp.xCoord][temp.yCoord] = '=';
                         applesEaten++;
+                        randApple();
                     }
                     else
                     {
@@ -132,6 +134,7 @@ namespace Snake_clone
                         Snake.Add(temp);
                         Board[temp.xCoord][temp.yCoord] = '=';
                         applesEaten++;
+                        randApple();
                     }
                     else
                     {
@@ -159,6 +162,7 @@ namespace Snake_clone
                         Snake.Add(temp);
                         Board[temp.xCoord][temp.yCoord] = '=';
                         applesEaten++;
+                        randApple();
                     }
                     else
                     {
@@ -177,12 +181,26 @@ namespace Snake_clone
                     break;
             } 
         }
-        
+
+        private void randApple()
+        {
+            var rand = new Random();
+            var xVal = 0;
+            var yVal = 0;
+
+                while (Board[xVal][yVal] == '=' || Board[xVal][yVal] == 'X') // keeps going until it randoms a non x or snake
+                {
+                    xVal = rand.Next() % boardSize;
+                    yVal = rand.Next() % boardSize * 2;
+                }
+                Board[xVal][yVal] = 'o';
+
+        }
+
 
         // prints out the board
         public void printBoard()
         {
-            // TODO: make sure the snake is in the board before printing it
             Console.Clear();
             foreach(var subList in Board)
             {
@@ -193,6 +211,7 @@ namespace Snake_clone
                 Console.WriteLine();
             }
             Console.WriteLine("Apples eaten: {0}", applesEaten);
+            Console.WriteLine("\nW A S D to move");
         }
 
         internal void gameOver()
